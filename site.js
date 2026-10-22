@@ -14,7 +14,7 @@ document.querySelectorAll('main section:not(.hero)').forEach(function(sec){
   sec.querySelectorAll(sel).forEach(function(el){if(el.parentElement.closest('.rv,.step,.quote,.card,.csteps li,.acc details'))return;el.classList.add('rv');el.style.setProperty('--d',Math.min(k++,6)*0.1+'s')});
 });
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv,.rv-img,.step').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.rv,.rv-img,.step,.steps').forEach(function(el){io.observe(el)});
 // 2-stufiges Formular
 var f=document.getElementById('lead-form');if(f){var s1=f.querySelector('[data-step="1"]'),s2=f.querySelector('[data-step="2"]'),lab=f.querySelector('[data-step-label]');
 f.querySelector('[data-next]').addEventListener('click',function(){var bad=[].slice.call(s1.querySelectorAll('[required]')).find(function(el){return!el.checkValidity()});if(bad){bad.reportValidity();return}s1.hidden=true;s2.hidden=false;lab.textContent='Schritt 2 von 2';s2.querySelector('input').focus()});
